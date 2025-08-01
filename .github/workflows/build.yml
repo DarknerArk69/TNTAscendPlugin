@@ -21,17 +21,10 @@ jobs:
         distribution: temurin
         java-version: 17
 
-    # Remove or comment out the cache step below
-    # - name: Cache Gradle packages
-    #   uses: actions/cache@v3
-    #   with:
-    #     path: ~/.gradle/caches
-    #     key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-    #     restore-keys: |
-    #       ${{ runner.os }}-gradle-
-
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
+      with:
+        cache-enabled: false
 
     - name: Build with Gradle
       run: gradle build
